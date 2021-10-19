@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function initSlotMachine() {
 	try {
-		const result = await axios.get(`http://localhost:3000/api/slots/init`);
+		const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/api/slots/init`);
 		return result.data;
 	} catch (e) {
 		console.log(e);
@@ -12,7 +12,7 @@ export async function initSlotMachine() {
 
 export async function spin() {
 	try {
-		const result = await axios.get(`http://localhost:3000/api/slots/spin`);
+		const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/api/slots/spin`);
 		return result.data;
 	} catch (e) {
 		console.log(e);
