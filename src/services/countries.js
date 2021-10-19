@@ -1,12 +1,9 @@
 import axios from "axios";
 
-//  axios.defaults.withCredentials = true;
-// axios.defaults.baseURL = publicRuntimeConfig.API_URL;
-
 export async function getCountry(text) {
 	try {
 		const result = await axios.get(
-			`http://localhost:3000/api/countries/unique/${text}`
+			`${process.env.REACT_APP_API_ENDPOINT}/api/countries/unique/${text}`
 		);
 		return result.data;
 	} catch (e) {
@@ -18,7 +15,7 @@ export async function getCountry(text) {
 export async function getCountries(text) {
 	try {
 		const result = await axios.get(
-			`http://localhost:3000/api/countries/search/${text}`
+			`${process.env.REACT_APP_API_ENDPOINT}/api/countries/search/${text}`
 		);
 		return result.data;
 	} catch (e) {
