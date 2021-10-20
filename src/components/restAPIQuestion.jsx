@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Divider, Header, Input, Segment } from "semantic-ui-react";
+import { Container, Header, Input, Segment } from "semantic-ui-react";
 
 function RestAPIQuestion(props) {
 	const { questionId, service } = props;
@@ -13,8 +13,6 @@ function RestAPIQuestion(props) {
 
 	return (
 		<div>
-			<Divider />
-
 			<Header inverted>Question {questionId}</Header>
 			<Input
 				placeholder="Search..."
@@ -31,7 +29,6 @@ function RestAPIQuestion(props) {
 					{JSON.stringify(requestResponse, null, 2)}
 				</Container>
 			</Segment>
-			<Divider />
 		</div>
 	);
 }
