@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Container, Header, Input, Segment } from "semantic-ui-react";
+import { Container, Input, Segment } from "semantic-ui-react";
+import { QuestionHeader } from ".";
 
 function RestAPIQuestion(props) {
-	const { questionId, service } = props;
+	const { questionId, description, service } = props;
 
 	const onConfirm = async () => {
 		const serviceResponse = await service(dataSearch);
@@ -13,7 +14,11 @@ function RestAPIQuestion(props) {
 
 	return (
 		<div>
-			<Header inverted>Question {questionId}</Header>
+			<QuestionHeader
+				questionId={questionId}
+				description={description}
+			></QuestionHeader>
+
 			<Input
 				placeholder="Search..."
 				onChange={(e, data) => {

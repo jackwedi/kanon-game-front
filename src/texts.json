@@ -1,0 +1,14 @@
+{
+	"question1": "Write a function that connects to https://restcountries.eu/ and gets a unique country from a specific name given using the Node back end and send it to the front end.",
+	"question2": "Using the same API ( https://restcountries.eu/ ), and from an array of string, write a function that returns a list of countries where their name matches at least a part of one of these string use the Node back end and send it to the front end.",
+	"question3": "Using the same API ( https://restcountries.eu/ ) in the React front end list all the countries and a field to filter the country by name.",
+	"question4": {
+		"description": "Create an endpoint on the backend that when called by the frontend will return the result of the spin and the coins the player won.",
+		"rules": [
+			"3 cherries in a row: 50 coins, 2 cherries in a row: 40 coins",
+			"3 Apples in a row: 20 coins, 2 Apples in a row: 10 coins",
+			"3 Bananas in a row: 15 coins, 2 Bananas in a row: 5 coins",
+			"3 lemons in a row: 3 coins"
+		]
+	}
+}

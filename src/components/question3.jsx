@@ -1,17 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container, Header, Input, Segment } from "semantic-ui-react";
+import { Container, Input, Segment } from "semantic-ui-react";
+import { QuestionHeader } from ".";
 
-function Question3() {
+function Question3(props) {
+	const { questionId, description } = props;
+
 	const [searchLabel, setSearchLabel] = useState();
 	const [allCountries, setCountries] = useState([]);
 	const [filteredCountries, setFilteredCountries] = useState(allCountries);
-	useEffect(async () => {
-		const countriesResult = await axios.get(
-			"https://restcountries.com/v3.1/all"
-		);
-		setCountries(countriesResult.data);
-		setFilteredCountries(countriesResult.data);
+	useEffect(() => {
+		async function getAllCountries() {
+			const countriesResult = await axios.get(
+				"https://restcountries.com/v3.1/all"
+			);
+			setCountries(countriesResult.data);
+			setFilteredCountries(countriesResult.data);
+		}
+		getAllCountries();
 	}, []);
 
 	const confirm = () => {
@@ -25,7 +31,10 @@ function Question3() {
 	};
 	return (
 		<div>
-			<Header inverted>Question 3</Header>
+			<QuestionHeader
+				questionId={questionId}
+				description={description}
+			></QuestionHeader>
 			<Input
 				placeholder="Search..."
 				onChange={(e, data) => {

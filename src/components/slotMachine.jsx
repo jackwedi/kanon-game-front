@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import { Button, Table, Segment, Header } from "semantic-ui-react";
+import { QuestionHeader } from ".";
 import { initSlotMachine, spin } from "../services/slotMachines";
 
-const SlotMachine = () => {
+const SlotMachine = (props) => {
+	const { questionId, description } = props;
+
 	const [slotState, setSlotState] = useState({
 		reels: [],
 		winnings: [],
 		purse: 0,
 	});
-	useEffect(async () => {
-		const { reels, purse } = await initSlotMachine();
-		setSlotState({ reels, purse });
+	useEffect(() => {
+		async function initSlot() {
+			const { reels, purse } = await initSlotMachine();
+			setSlotState({ reels, purse });
+		}
+		initSlot();
 	}, []);
 
 	const getRows = (reels) => {
@@ -27,6 +33,10 @@ const SlotMachine = () => {
 	};
 	return (
 		<div>
+			<QuestionHeader
+				questionId={questionId}
+				description={description}
+			></QuestionHeader>
 			<Table celled textAlign="center">
 				<Table.Header>
 					<Table.Row>
