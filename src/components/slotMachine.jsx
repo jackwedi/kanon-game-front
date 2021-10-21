@@ -31,7 +31,9 @@ const SlotMachine = () => {
 				<Table.Header>
 					<Table.Row>
 						{slotState.reels.map((reel, index) => (
-							<Table.HeaderCell>Reel {index}</Table.HeaderCell>
+							<Table.HeaderCell key={`head${index}`}>
+								Reel {index}
+							</Table.HeaderCell>
 						))}
 					</Table.Row>
 				</Table.Header>
@@ -41,7 +43,7 @@ const SlotMachine = () => {
 						const winnings =
 							slotState.winnings?.winningsDescription;
 
-						const columns = row.map((cell) => {
+						const columns = row.map((cell, cellIndex) => {
 							const winning = winnings?.find((winning) => {
 								return (
 									winning.rowIndex === index &&
@@ -50,13 +52,22 @@ const SlotMachine = () => {
 							});
 
 							return winning ? (
-								<Table.Cell active>{cell}</Table.Cell>
+								<Table.Cell
+									key={`cell${(index + 1) * cellIndex}`}
+									active
+								>
+									{cell}
+								</Table.Cell>
 							) : (
-								<Table.Cell>{cell}</Table.Cell>
+								<Table.Cell
+									key={`cell${(index + 1) * cellIndex}`}
+								>
+									{cell}
+								</Table.Cell>
 							);
 						});
 
-						return <Table.Row>{columns}</Table.Row>;
+						return <Table.Row key={index}>{columns}</Table.Row>;
 					})}
 				</Table.Body>
 			</Table>
